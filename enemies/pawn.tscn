@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://nhqauxegeh8s"]
+
+[ext_resource type="Script" path="res://enemies/enemy.gd" id="1_k6av7"]
+[ext_resource type="Texture2D" uid="uid://dfvgey6skeqm" path="res://addons/Tiny Swords/Factions/Knights/Troops/Pawn/Red/Pawn_Red.png" id="1_ll4fw"]
+[ext_resource type="PackedScene" uid="uid://dvpxl5oyqck45" path="res://misc/skull.tscn" id="2_5yass"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iodu3"]
+atlas = ExtResource("1_ll4fw")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nry7"]
+atlas = ExtResource("1_ll4fw")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsajy"]
+atlas = ExtResource("1_ll4fw")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jymay"]
+atlas = ExtResource("1_ll4fw")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogk6f"]
+atlas = ExtResource("1_ll4fw")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqvy7"]
+atlas = ExtResource("1_ll4fw")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bwmc5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iodu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nry7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsajy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jymay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogk6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqvy7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqum5"]
+radius = 20.0
+height = 48.0
+
+[node name="Pawn" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_k6av7")
+death_prefab = ExtResource("2_5yass")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bwmc5")
+autoplay = "default"
+frame = 5
+frame_progress = 0.604637
+offset = Vector2(0, -25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -25)
+shape = SubResource("CapsuleShape2D_dqum5")
+
+[node name="DamageDigitMarker" type="Marker2D" parent="."]
+position = Vector2(0, -50)

@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkt1tc225iu6t"]
+
+[ext_resource type="Texture2D" uid="uid://jx3tg5h1et0v" path="res://addons/Tiny Swords/UI/Banners/Banner_Horizontal.png" id="1_8tvjl"]
+[ext_resource type="Script" path="res://UI/GameUI.gd" id="1_w7u45"]
+[ext_resource type="Texture2D" uid="uid://bcvy2dl8lq1cm" path="res://addons/Tiny Swords/Resources/Resources/M_Idle_(NoShadow).png" id="3_4d60s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r6f0j"]
+font_size = 32
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5gw74"]
+texture = ExtResource("1_8tvjl")
+texture_margin_left = 33.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 35.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(31, 48, 129, 123)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vs24h"]
+line_spacing = 5.0
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5ttt"]
+atlas = ExtResource("3_4d60s")
+region = Rect2(32, 48, 64, 64)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_w7u45")
+
+[node name="TimerLabel" type="Label" parent="."]
+offset_left = 537.0
+offset_top = 40.0
+offset_right = 577.0
+offset_bottom = 63.0
+text = "00:00"
+label_settings = SubResource("LabelSettings_r6f0j")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 882.0
+offset_top = 2.0
+offset_right = 1149.0
+offset_bottom = 111.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_5gw74")
+
+[node name="MeatLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.599251
+anchor_top = -0.0366972
+anchor_right = 0.876405
+anchor_bottom = 0.770642
+offset_right = -1.52588e-05
+grow_horizontal = 0
+grow_vertical = 2
+text = "50"
+label_settings = SubResource("LabelSettings_vs24h")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+anchor_left = 0.134831
+anchor_top = -0.00917431
+anchor_right = 0.490637
+anchor_bottom = 0.862385
+texture = SubResource("AtlasTexture_n5ttt")
+metadata/_edit_use_anchors_ = true

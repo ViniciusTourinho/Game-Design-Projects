@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://dhydv8t6cu8p"]
+
+[ext_resource type="Script" path="res://enemies/enemy.gd" id="1_hyx08"]
+[ext_resource type="PackedScene" uid="uid://dvpxl5oyqck45" path="res://misc/skull.tscn" id="2_pfgts"]
+[ext_resource type="Texture2D" uid="uid://bbpgouug3opk6" path="res://addons/Tiny Swords/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="3_ekg2n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cku8"]
+atlas = ExtResource("3_ekg2n")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ih8c"]
+atlas = ExtResource("3_ekg2n")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q4ub"]
+atlas = ExtResource("3_ekg2n")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7l4p"]
+atlas = ExtResource("3_ekg2n")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pa1e3"]
+atlas = ExtResource("3_ekg2n")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3qsh"]
+atlas = ExtResource("3_ekg2n")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bwmc5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cku8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ih8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q4ub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7l4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pa1e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3qsh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqum5"]
+radius = 22.0
+height = 74.0
+
+[node name="Goblin" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_hyx08")
+death_prefab = ExtResource("2_pfgts")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bwmc5")
+autoplay = "default"
+frame = 3
+frame_progress = 0.755455
+offset = Vector2(0, -25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -25)
+shape = SubResource("CapsuleShape2D_dqum5")
+
+[node name="DamageDigitMarker" type="Marker2D" parent="."]
+position = Vector2(0, -60)
